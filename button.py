@@ -1,0 +1,18 @@
+import RPi.GPIO as GPIO
+from time import sleep
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(20, GPIO.IN, pull_up_down=GPIO.PUD_UP)#button
+
+GPIO.setwarnings(False)
+
+if GPIO.input(20) == False:
+    print('Button Pressed')
+    time.sleep(0.2)
+    GPIO.setup(16, GPIO.OUT)
+    GPIO.output(16, GPIO.HIGH)
+    sleep(30)	# Waits for half a second
+    GPIO.output(16, GPIO.LOW)
+
+GPIO.cleanup()
